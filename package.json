@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "name": "team-profile-generator",
+  "description": "This project generates team profiles using Jest and Inquirer.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jermeewinn/team-profile-generator.git"
+  },
+  "author": "Jeremy Huynh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jermeewinn/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/jermeewinn/team-profile-generator#readme"
+}
