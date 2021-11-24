@@ -32,4 +32,4 @@ test('creates a role for the engineer', () => {
 test('creates a GitHub object for the engineer', () => {
     const employee = 'davehub';
     const expected = new Engineer('Dave', '46854', 'dave@ucsc.edu', employee).getGithub()
-})
+});

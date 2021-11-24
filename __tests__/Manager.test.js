@@ -32,4 +32,6 @@ test('creates a role for the employee', () => {
 test('creates a phone number for the Manager', () => {
     const employee = '9099279928';
     const expected = new Manager('Dave', '46854', 'dave@ucsc.edu', employee).getOfficeNumber()
+
+    expect(expected).toEqual('9099279928')
 });     
