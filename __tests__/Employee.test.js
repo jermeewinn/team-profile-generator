@@ -24,6 +24,9 @@ test('creates an employee email', () => {
 });
 
 test('creates a role for the employee', () => {
-    
-})
+    const role = 'Employee';
+    const expected = new Employee('Dave', '46854', 'dave@ucsc.edu').getRole()
+
+    expect(expected).toEqual(role)
+});
 
