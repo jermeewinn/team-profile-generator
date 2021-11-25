@@ -35,7 +35,7 @@ function createTeam(data) {
             <p class="title">${(data.name)}</p>                              
             <p class="subtitle">${(data.title)}</p>
             <p id="id"><strong>Employee ID:</strong> ${(data.id)}</p>
-            <p><strong>Email:</strong> ${(data.email)}</p>
+            <a href="mailto:${data.email}><strong>Email:</strong> ${(data.email)}</p>
             ${genCustomInfo(data)}
         </div>               
     </div>`
@@ -48,7 +48,7 @@ function genCustomInfo(data) {
         return `<p><strong>Office Number:</strong> ${data.getOfficeNumber}</p>`
     }
     if (data.getRole() === 'Engineer') {
-        return `<p><strong>GitHub:</strong> ${data.getGithub}</p>`
+        return `<a href="https://github.com/${data.gitHub}><strong>GitHub:</strong> https://github.com/jermeewinn${data.getGithub}</a>`
     }
     if (data.getRole() === 'Intern') {
         return `<p><strong>School:</strong> ${data.getSchool}</p>`
