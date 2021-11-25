@@ -24,4 +24,19 @@ function generateHTML() {
     </body>
 
 </html>`
-}
+};
+// Universal info for each team member
+function createTeam(element) {
+    data.forEach(element => {
+        output += `<div class="card is-child">
+        <div class="card box">
+            <div class="card-content">
+            <p class="title">${(element.name)}</p>                              
+            <p class="subtitle">${(element.title)}</p>
+            <p id="id"><strong>Employee ID:</strong> ${(element.id)}</p>
+            <p><strong>Email:</strong> ${(element.email)}</p>
+            ${genCustomInfo(element)}
+        </div>               
+    </div>`
+    })
+};
