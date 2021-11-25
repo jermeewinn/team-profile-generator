@@ -8,21 +8,21 @@ const Intern = require('./lib/Intern');
 
 const questions = 
     ([
-        {
-            type: 'input',
-            name: 'getName',
-            message: "Input your team member's name:"
-        },
-        {
-            type: 'input',
-            name: 'getId',
-            message: "Input your team member's employee ID:"
-        },
-        {
-            type: 'input',
-            name: 'getEmail',
-            message: "Enter your team member's company Email:"
-        },
+        // {
+        //     type: 'input',
+        //     name: 'getName',
+        //     message: "Input your team member's name:"
+        // },
+        // {
+        //     type: 'input',
+        //     name: 'getId',
+        //     message: "Input your team member's employee ID:"
+        // },
+        // {
+        //     type: 'input',
+        //     name: 'getEmail',
+        //     message: "Enter your team member's company Email:"
+        // },
         // {
         //     type: 'list',
         //     name: 'getRole',
@@ -34,12 +34,12 @@ const questions =
         //     name: 'genCustomInfo',
         //     message: "If your member is an Engineer, enter their GitHub. If your member is an Intern, enter their school."
         // },
-        {
-            type: 'list',
-            name: 'promptFinish2',
-            message: 'Do you have more people on your team?',
-            choices: ['Yes', 'No']
-        }
+        // {
+        //     type: 'list',
+        //     name: 'promptFinish1',
+        //     message: 'Do you have more people on your team?',
+        //     choices: ['Yes', 'No']
+        // }
     ])
 
 const teamArray = [];
@@ -68,7 +68,7 @@ function init() {
         },
         // {
         //     type: 'list',
-        //     name: 'promptFinish1',
+        //     name: 'promptFinish2',
         //     message: 'Do you have more people on your team?',
         //     choices: ['Yes', 'No']
         // }
@@ -76,7 +76,13 @@ function init() {
         .then(({ role, genCustomInfo }) => {
             role = 'Manager';
             team();
-        })   
+            // if (promptFinish2 === "Yes") {
+            //     newMembers();
+            // } else fs.writeFile('../dist/index.html', template(teamArray), (err) => {
+            //         if (err) {console.log('Try again.', err)}
+            //         console.log("HTML successfully generated!")
+            //     });
+        });  
 };
 
 
@@ -86,7 +92,7 @@ function newMembers() {
             {
                 type: 'list',
                 name: 'getRole',
-                message: "Enter your team memeber's role: (Input Manager, Engineer, or Intern)",
+                message: "Enter your team member's role: (Input Manager, Engineer, or Intern)",
                 choices: ['Engineer', 'Intern']
             },
             {
@@ -94,28 +100,56 @@ function newMembers() {
                 name: 'genCustomInfo',
                 message: "If your member is an Engineer, enter their GitHub. If your member is an Intern, enter their school."
             },
+            {
+                type: 'input',
+                name: 'getName',
+                message: "Input your team member's name:"
+            },
+            {
+                type: 'input',
+                name: 'getId',
+                message: "Input your team member's employee ID:"
+            },
+            {
+                type: 'input',
+                name: 'getEmail',
+                message: "Enter your team member's company Email:"
+            },
+            {
+                type: 'list',
+                name: 'promptFinish1',
+                message: 'Do you have more people on your team?',
+                choices: ['Yes', 'No']
+            }
         ])
-        .prompt(questions);
-       
+        .then(({promptFinish1}) => {
+            if (promptFinish1 === "Yes") {
+                return newMembers();
+            }
+        });
+}   
 function team(role, genCustomInfo) {
-    inquirer.prompt(questions)
-        .then(({ id, employeeName, email, promptFinish2}) => {
-            // let member;
+    newMembers()
+        // if (promptFinish1 === "Yes") {
+        //     return newMembers();
+        // }
+    // inquirer.prompt(questions)
+    //     .then(({ id, employeeName, email, promptFinish1}) => {
+    //         let member;
 
-            // if (getRole === 'Engineer') {
-            //     member = new Engineer(employeeName, id, email, getCustomInfo)
-            // } else if (getRole === 'Intern') {
-            //     member = new Intern(employeeName, id, email, getCustomInfo)
-            // }
-            teamArray.push(member);
+    //         if (getRole === 'Engineer') {
+    //             member = new Engineer(employeeName, id, email, getCustomInfo)
+    //         } else if (getRole === 'Intern') {
+    //             member = new Intern(employeeName, id, email, getCustomInfo)
+    //         }
+    //         teamArray.push(member);
         
-            if (promptFinish2 === "Yes") {
-                newMembers();
-            } else fs.writeFile('../dist/index.html', teamplate(teamArray), (err) => {
-                    if (err) {console.log('Try again.', err)}
-                    console.log("HTML successfully generated!")
-                })
-            })
+    //         if (promptFinish1 === "Yes") {
+    //             newMembers();
+    //         } else fs.writeFile('../dist/index.html', template(teamArray), (err) => {
+    //                 if (err) {console.log('Try again.', err)}
+    //                 console.log("HTML successfully generated!")
+    //             })
+    //     })
     }
-
 init();
