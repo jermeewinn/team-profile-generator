@@ -1,4 +1,4 @@
-function generateHTML() {
+function template() {
     return `
     <!DOCTYPE html>
 <html>
@@ -25,8 +25,9 @@ function generateHTML() {
 
 </html>`
 };
-// Universal info for each team member
+// Function for universal info for each team member
 function createTeam(element) {
+    let output = '';
     data.forEach(element => {
         output += `<div class="card is-child">
         <div class="card box">
@@ -39,4 +40,19 @@ function createTeam(element) {
         </div>               
     </div>`
     })
+    return output;
 };
+// Function for custom info for each class
+function genCustomInfo(element) {
+    if (element.getRole() === 'Manager') {
+        return `<p><strong>Office Number:</strong> ${element.getOfficeNumber}</p>`
+    }
+    if (element.getRole() === 'Engineer') {
+        return `<p><strong>GitHub:</strong> ${element.getGithub}</p>`
+    }
+    if (element.getRole() === 'Intern') {
+        return `<p><strong>School:</strong> ${element.getSchool}</p>`
+    }
+};
+
+module.exports = template; 
