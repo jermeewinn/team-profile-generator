@@ -26,32 +26,32 @@ function template() {
 </html>`
 };
 // Function for universal info for each team member
-function createTeam(element) {
+function createTeam(data) {
     let output = '';
-    data.forEach(element => {
+    data.forEach(data => {
         output += `<div class="card is-child">
         <div class="card box">
             <div class="card-content">
-            <p class="title">${(element.name)}</p>                              
-            <p class="subtitle">${(element.title)}</p>
-            <p id="id"><strong>Employee ID:</strong> ${(element.id)}</p>
-            <p><strong>Email:</strong> ${(element.email)}</p>
-            ${genCustomInfo(element)}
+            <p class="title">${(data.name)}</p>                              
+            <p class="subtitle">${(data.title)}</p>
+            <p id="id"><strong>Employee ID:</strong> ${(data.id)}</p>
+            <p><strong>Email:</strong> ${(data.email)}</p>
+            ${genCustomInfo(data)}
         </div>               
     </div>`
     })
     return output;
 };
 // Function for custom info for each class
-function genCustomInfo(element) {
-    if (element.getRole() === 'Manager') {
-        return `<p><strong>Office Number:</strong> ${element.getOfficeNumber}</p>`
+function genCustomInfo(data) {
+    if (data.getRole() === 'Manager') {
+        return `<p><strong>Office Number:</strong> ${data.getOfficeNumber}</p>`
     }
-    if (element.getRole() === 'Engineer') {
-        return `<p><strong>GitHub:</strong> ${element.getGithub}</p>`
+    if (data.getRole() === 'Engineer') {
+        return `<p><strong>GitHub:</strong> ${data.getGithub}</p>`
     }
-    if (element.getRole() === 'Intern') {
-        return `<p><strong>School:</strong> ${element.getSchool}</p>`
+    if (data.getRole() === 'Intern') {
+        return `<p><strong>School:</strong> ${data.getSchool}</p>`
     }
 };
 
