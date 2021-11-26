@@ -51,7 +51,7 @@ function genCustomInfo(element) {
         return `<p><strong>Office Number:</strong> ${element.getCustomInfo}</p>`
     }
     if (element.getRole() === 'Engineer') {
-        return `<a href="https://github.com/${element.getCustomInfo}><strong>GitHub:</strong> https://github.com/jermeewinn${element.getCustomInfo}</a>`
+        return `<a href="https://github.com/${element.getCustomInfo}><strong>GitHub:</strong> https://github.com/${element.getCustomInfo}</a>`
     }
     if (element.getRole() === 'Intern') {
         return `<p><strong>School:</strong> ${element.getCustomInfo}</p>`
