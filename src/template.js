@@ -31,17 +31,17 @@ function template(data) {
 function generateTeam(data) {
     let output = '';
     data.forEach(element => {
-        output += `
-        <div class="card is-child">
-            <div class="card box">
-                <div class="card-content">
-                <p class="title">${(element.employeeName)}</p>                              
-                <p class="subtitle">${(element.getRole)}</p>
-                <p id="id"><strong>Employee ID:</strong> ${(element.id)}</p>
-                <a href="mailto:${element.email}><strong>Email:</strong> ${(element.email)}</a>
-                ${genCustomInfo(element)}
-            </div>               
-        </div>`
+        output += `<div class="card is-child m-4>
+                        <div class="card box">
+                            <div class="card-content">
+                                <p class="title">${(element.employeeName)}</p>                              
+                                <p class="subtitle">${(element.getRole)}</p>
+                                <p id="id"><strong>Employee ID:</strong> ${(element.id)}</p>
+                                <a href="mailto:${element.email}><strong>Email:</strong> ${(element.email)}</a>
+                                ${genCustomInfo(element)}
+                            </div>
+                        </div>               
+                    </div>`
     })
     return output;
 };
