@@ -32,13 +32,13 @@ function generateTeam(data) {
     let output = '';
     data.forEach(element => {
         output += 
-                    `<div class="card is-child m-4>
+                    `<div class="card is-child m-4">
                         <div class="card box">
                             <div class="card-content">
                                 <p class="title">${element.name}</p>                              
                                 <p class="subtitle">${element.getRole()}</p>
                                 <p id="id"><strong>Employee ID:</strong> ${element.id}</p>
-                                <a href="mailto:${element.email}><strong>Email:</strong> ${element.email}</a>
+                                <a href="mailto:${element.email}"><strong>Email:</strong> ${element.email}</a>
                                 ${genCustomInfo(element)}
                             </div>
                         </div>               
@@ -53,7 +53,7 @@ function genCustomInfo(element) {
         return `<p><strong>Office Number:</strong> ${element.officeNumber}</p>`
     }
     if (element.getRole() === 'Engineer') {
-        return `<a href="https://github.com/${element.github}><strong>GitHub:</strong> https://github.com/${element.github}</a>`
+        return `<br><a href="https://github.com/${element.github}"><strong>GitHub:</strong> https://github.com/${element.github}</a>`
     }
     if (element.getRole() === 'Intern') {
         return `<p><strong>School:</strong> ${element.school}</p>`
