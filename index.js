@@ -45,6 +45,7 @@ function newMembers(getRole,getCustomInfo) {
                 choices: ['Yes', 'No']
             }
         ])
+            //this adds new members to the array AND sets conditions whether or not you want to continue the question loop through the prompt.
             .then(({getRole,getCustomInfo,employeeName,id,email,promptFinish1}) => {
                 let member;
                 console.log(getRole)
