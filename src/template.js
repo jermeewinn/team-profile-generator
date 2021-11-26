@@ -1,4 +1,4 @@
-function template() {
+function template(data) {
     return `
     <!DOCTYPE html>
 <html>
@@ -18,41 +18,45 @@ function template() {
                 </header>
             </div>
         </section>
-        <section class="tile is-parent is-justify-content-space-evenly  is-flex-wrap-wrap is-flex-direction-row">
-           ${generateTeam(data)}
+        <section>
+            <div class="tile is-parent is-justify-content-space-evenly  is-flex-wrap-wrap is-flex-direction-row">
+                ${generateTeam(data)}
+            </div>
         </section>
     </body>
 
 </html>`
 };
 // Function for universal info for each team member
-function createTeam(data) {
+function generateTeam(data) {
     let output = '';
-    data.forEach(data => {
-        output += `<div class="card is-child">
-        <div class="card box">
-            <div class="card-content">
-            <p class="title">${(data.name)}</p>                              
-            <p class="subtitle">${(data.title)}</p>
-            <p id="id"><strong>Employee ID:</strong> ${(data.id)}</p>
-            <a href="mailto:${data.email}><strong>Email:</strong> ${(data.email)}</p>
-            ${genCustomInfo(data)}
-        </div>               
-    </div>`
+    data.forEach(element => {
+        output += `
+        <div class="card is-child">
+            <div class="card box">
+                <div class="card-content">
+                <p class="title">${(element.employeeName)}</p>                              
+                <p class="subtitle">${(element.getRole)}</p>
+                <p id="id"><strong>Employee ID:</strong> ${(element.id)}</p>
+                <a href="mailto:${element.email}><strong>Email:</strong> ${(element.email)}</a>
+                ${genCustomInfo(element)}
+            </div>               
+        </div>`
     })
     return output;
 };
 // Function for custom info for each class
-function genCustomInfo(data) {
-    if (data.getRole() === 'Manager') {
-        return `<p><strong>Office Number:</strong> ${data.getOfficeNumber}</p>`
+function genCustomInfo(element) {
+    if (element.getRole() === 'Manager') {
+        return `<p><strong>Office Number:</strong> ${element.getCustomInfo}</p>`
     }
-    if (data.getRole() === 'Engineer') {
-        return `<a href="https://github.com/${data.gitHub}><strong>GitHub:</strong> https://github.com/jermeewinn${data.getGithub}</a>`
+    if (element.getRole() === 'Engineer') {
+        return `<a href="https://github.com/${element.getCustomInfo}><strong>GitHub:</strong> https://github.com/jermeewinn${element.getCustomInfo}</a>`
     }
-    if (data.getRole() === 'Intern') {
-        return `<p><strong>School:</strong> ${data.getSchool}</p>`
+    if (element.getRole() === 'Intern') {
+        return `<p><strong>School:</strong> ${element.getCustomInfo}</p>`
     }
 };
 
-module.exports = template; 
+module.exports = template;
+console.log(template); 
