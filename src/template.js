@@ -31,30 +31,32 @@ function template(data) {
 function generateTeam(data) {
     let output = '';
     data.forEach(element => {
-        output += `<div class="card is-child m-4>
+        output += 
+                    `<div class="card is-child m-4>
                         <div class="card box">
                             <div class="card-content">
-                                <p class="title">${(element.employeeName)}</p>                              
-                                <p class="subtitle">${(element.getRole)}</p>
-                                <p id="id"><strong>Employee ID:</strong> ${(element.id)}</p>
-                                <a href="mailto:${element.email}><strong>Email:</strong> ${(element.email)}</a>
+                                <p class="title">${element.name}</p>                              
+                                <p class="subtitle">${element.getRole()}</p>
+                                <p id="id"><strong>Employee ID:</strong> ${element.id}</p>
+                                <a href="mailto:${element.email}><strong>Email:</strong> ${element.email}</a>
                                 ${genCustomInfo(element)}
                             </div>
                         </div>               
-                    </div>`
+                    </div>
+                    `
     })
     return output;
 };
 // Function for custom info for each class
 function genCustomInfo(element) {
     if (element.getRole() === 'Manager') {
-        return `<p><strong>Office Number:</strong> ${element.getCustomInfo}</p>`
+        return `<p><strong>Office Number:</strong> ${element.officeNumber}</p>`
     }
     if (element.getRole() === 'Engineer') {
-        return `<a href="https://github.com/${element.getCustomInfo}><strong>GitHub:</strong> https://github.com/${element.getCustomInfo}</a>`
+        return `<a href="https://github.com/${element.github}><strong>GitHub:</strong> https://github.com/${element.github}</a>`
     }
     if (element.getRole() === 'Intern') {
-        return `<p><strong>School:</strong> ${element.getCustomInfo}</p>`
+        return `<p><strong>School:</strong> ${element.school}</p>`
     }
 };
 
