@@ -21,7 +21,7 @@ function newMembers(getRole,getCustomInfo) {
             {
                 type: 'input',
                 name: 'getCustomInfo',
-                message: "If your member is an input manager, please provide the office phone number. If your member is an Engineer, enter their GitHub. If your member is an Intern, enter their school."
+                message: "If your member is a MANAGER, please provide the office phone number. If your member is an ENGINEER, enter their GitHub. If your member is an INTERN, enter their school."
             },
             {
                 type: 'input',
